@@ -1,4 +1,4 @@
-package com.example.swipeview.test_view
+package com.haomini.flowlayout
 
 import android.content.Context
 import android.util.AttributeSet

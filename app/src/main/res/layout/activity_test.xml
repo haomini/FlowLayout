@@ -6,11 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.example.swipeview.test_view.FlowLayout
-            app:layout_constraintTop_toTopOf="parent"
+    <com.haomini.flowlayout.FlowLayout
             android:layout_width="match_parent"
-            app:layout_constraintWidth_percent="0.5"
-            app:layout_constraintStart_toStartOf="parent"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingStart="10dp"
@@ -50,5 +47,10 @@
                 android:layout_width="270px"
                 android:background="@color/colorAccent"
                 android:layout_height="250px"/>
-    </com.example.swipeview.test_view.FlowLayout>
+
+        <com.example.swipeview.test_view.TestMeasureView
+                android:layout_width="1090px"
+                android:background="@color/colorAccent"
+                android:layout_height="600px"/>
+    </com.haomini.flowlayout.FlowLayout>
 </androidx.core.widget.NestedScrollView>

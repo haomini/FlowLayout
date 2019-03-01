@@ -27,3 +27,42 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+subprojects {
+    afterEvaluate { Project project ->
+        ext.pluginContainer = project.getPlugins()
+        def hasAppPlugin = ext.pluginContainer.hasPlugin("com.android.application")
+        def hasLibPlugin = ext.pluginContainer.hasPlugin("com.android.library")
+        if (hasAppPlugin || hasLibPlugin) {
+            android {
+                compileSdkVersion COMPILE_SDK_VERSION as int
+                buildToolsVersion BUILD_TOOL_VERSION
+                defaultConfig {
+                    minSdkVersion MIN_SDK_VERSION as int
+                    targetSdkVersion TARGET_SDK_VERSION as int
+                    versionCode VERSION_CODE as int
+                    versionName VERSION_NAME
+                }
+
+                buildTypes {
+                    release {
+                        debuggable false
+                        minifyEnabled true //实时构建库项目时若启用混淆，APP模块引用会造成部分方法找不到
+                    }
+                    debug {
+                        debuggable true
+                        minifyEnabled false
+                    }
+                }
+                lintOptions {
+                    abortOnError false
+                }
+
+            }
+            dependencies {
+                //自己项目加入版本覆盖依赖包的版本
+            }
+        }
+    }
+
+}
